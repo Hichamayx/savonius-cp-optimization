@@ -1,0 +1,26 @@
+FoamFile
+{
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      dynamicMeshDict;
+}
+
+mover
+{
+    type            solidBody;
+
+    libs            ("libpointMeshMovers.so");
+
+    cellZone        rotating;
+
+    solidBodyMotionFunction
+    {
+        type          rotatingMotion;
+
+        origin        (0 0 0);
+        axis          (0 0 1);
+
+        omega         121.52 [rpm];
+    }
+}

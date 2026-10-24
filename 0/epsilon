@@ -1,0 +1,40 @@
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    object      epsilon;
+}
+
+
+dimensions      [0 2 -3 0 0 0 0];
+
+internalField   uniform 13.83;
+
+boundaryField
+{
+    #includeEtc "caseDicts/setConstraintTypes"
+
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 13.83;
+    }
+
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform 13.83;
+        value           uniform 13.83;
+    }
+
+    blades
+    {
+        type            epsilonWallFunction;
+        value           uniform 13.83;
+    }
+
+    nonCouple
+    {
+        type            zeroGradient;
+    }
+}

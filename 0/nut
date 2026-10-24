@@ -1,0 +1,40 @@
+FoamFile
+{
+    format      ascii;
+    class       volScalarField;
+    object      nut;
+}
+
+
+dimensions      [0 2 -1 0 0 0 0];
+
+internalField   uniform 1.5e-04;
+
+boundaryField
+{
+    #includeEtc "caseDicts/setConstraintTypes"
+
+    inlet
+    {
+        type            calculated;
+        value           uniform 1.5e-04;
+    }
+
+    outlet
+    {
+        type            calculated;
+        value           uniform 1.5e-04;
+    }
+
+    blades
+    {
+        type            nutkWallFunction;
+        value           uniform 0;
+    }
+
+    nonCouple
+    {
+        type            calculated;
+        value           uniform 1.5e-04;
+    }
+}
